@@ -1,0 +1,79 @@
+div.inputData {
+    background-color: honeydew;
+}
+
+tspan.spacer {
+    text-anchor: end;
+    font-size: 20px;
+}
+
+input.inputField {
+    background-color: chocolate;
+}
+
+div.spacer {
+    font-size: 15px;
+}
+
+div.spacer div text {
+    float: right;
+    width: auto;
+}
+
+text.spacer {
+    text-anchor: end;
+    font-size: 2px;
+}
+
+circle.portfolioflower {
+    fill: none;
+    stroke: black;
+    stroke-dasharray: 10, 5;
+}
+
+path.portfolioflower.one {
+    fill: grey;
+    stroke: grey;
+}
+
+path.portfolioflower.zero {
+    fill: rgb(18, 234, 18);
+    stroke: rgb(18, 234, 18);
+}
+
+circle.portfolioflower.one {
+    fill: grey;
+    stroke: grey;
+}
+
+circle.portfolioflower.zero {
+    fill: rgb(18, 234, 18);
+    stroke: rgb(18, 234, 18);
+}
+
+text.portfolioflower.one {
+    font-size: 18px;
+    fill: grey;
+    stroke: none;
+}
+
+text.portfolioflower.zero {
+    font-size: 18px;
+    fill: rgb(18, 234, 18);
+    stroke: none;
+}
+
+g.tooltip {
+    background: black;
+    color: white;
+    position: absolute;
+    text-align: center;
+    font-size: 25px;
+    pointer-events: none;
+    overflow: auto;
+}
+
+.leafy {
+    color: blue;
+    font-size: 20px;
+}
