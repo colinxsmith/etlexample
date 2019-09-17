@@ -73,7 +73,7 @@ app.route('/etl')
 app.get('*', (req, res) => {
     res
         .status(200)
-        .sendFile(path.join(__dirname, 'dist/index.html'));
+        .sendFile(path.join(__dirname, 'dist/etl/index.html'));
 });
 
 app.listen(port, () => console.log(`Running on http://${host}:${port}`));
