@@ -261,7 +261,7 @@ export class EtlComponent implements OnInit {
       this.stockBuy = this.reOrderArray(DAT.port.map(d => d.buy));
       this.stockSell = this.reOrderArray(DAT.port.map(d => d.sell));
       this.ETL = DAT.ETL;
-      this.RISK = DAT.RISK;
+//      this.RISK = DAT.RISK;
       this.RETURN = DAT.RETURN;
       this.MESSAGE = DAT.message;
       this.Return_gamma = DAT.gamma;
@@ -371,7 +371,7 @@ export class EtlComponent implements OnInit {
             .text(this.tableFormat(out));
         }
       }));
-    const scalarParams = ['Zero Risk Model', 'ETL Constraint', 'Relative Etl', 'Etl Aversion', 'Return gamma', 'Revision', 'Turnover',
+    const scalarParams = ['ETL Constraint', 'Relative Etl', 'Etl Aversion', 'Return gamma', 'Revision', 'Turnover',
       'T. Costs', 'ETL min', 'ETL max', 'Basket', 'Trades', 'Min. holding', 'Min. trade'];
     const inputFields = tab.append('div')
       .style('width', `${fixedTableWidth}px`)
@@ -391,70 +391,66 @@ export class EtlComponent implements OnInit {
       .style('color', colourT(1))
       .text(d => d)
       .append('input')
-      .attr('type', (d, i) => i < 3 ? 'checkbox' : '')
-      .style('color', (d, i) => i < 3 ? 'auto' : colourT(0.5))
-      .style('width', (d, i) => i < 3 ? 'auto' : `inherit`)
-      .style('background-color', (d, i) => i < 3 ? 'auto' : 'chartreuse')
+      .attr('type', (d, i) => i < 2 ? 'checkbox' : '')
+      .style('color', (d, i) => i < 2 ? 'auto' : colourT(0.5))
+      .style('width', (d, i) => i < 2 ? 'auto' : `inherit`)
+      .style('background-color', (d, i) => i < 2 ? 'auto' : 'chartreuse')
       .on('change', (d, i, j) => {
         const here = j[i];
         if (i === 0) {
-          this.noRiskModel = here.checked;
-        } else if (i === 1) {
           this.CVar_constraint = here.checked ? 1 : 0;
-        } else if (i === 2) {
+        } else if (i === 1) {
           this.relEtl = here.checked;
-        } else if (i === 3) {
+        } else if (i === 2) {
           this.CVar_averse = +here.value;
-        } else if (i === 4) {
+        } else if (i === 3) {
           this.Return_gamma = +here.value;
-        } else if (i === 5) {
+        } else if (i === 4) {
           this.revise = +here.value;
-        } else if (i === 6) {
+        } else if (i === 5) {
           this.delta = +here.value;
-        } else if (i === 7) {
+        } else if (i === 6) {
           this.costs = +here.value;
-        } else if (i === 8) {
+        } else if (i === 7) {
           this.CVarMin = +here.value;
-        } else if (i === 9) {
+        } else if (i === 8) {
           this.CVarMax = +here.value;
-        } else if (i === 10) {
+        } else if (i === 9) {
           this.stockBasket = +here.value;
-        } else if (i === 11) {
+        } else if (i === 10) {
           this.stockTrades = +here.value;
-        } else if (i === 12) {
+        } else if (i === 11) {
           this.stockMinHold = +here.value;
-        } else if (i === 13) {
+        } else if (i === 12) {
           this.stockMinTrade = +here.value;
         }
       })
       .nodes().forEach((d, i, j) => {
         if (i === 0) {
-          d.checked = this.noRiskModel;
-        } else if (i === 1) {
           d.checked = this.CVar_constraint === 1;
-        } else if (i === 2) {
+        } else if (i === 1) {
           d.checked = this.relEtl;
-        } else if (i === 3) {
+        } else if (i === 2) {
           d.value = `${this.CVar_averse}`;
-        } else if (i === 4) {
+        } else if (i === 3) {
           d.value = `${this.Return_gamma}`;
-        } else if (i === 5) {
+        } else if (i === 4) {
           d.value = `${this.revise}`;
-        } else if (i === 6) {
+        } else if (i === 5) {
           d.value = `${this.delta}`;
-        } else if (i === 7) {
+        } else if (i === 6) {
           d.value = `${this.costs}`;
-        } else if (i === 8) {
+        } else if (i === 7) {
           d.value = `${this.CVarMin}`;
-        } else if (i === 9) {
+        } else if (i === 8) {
           d.value = `${this.CVarMax}`;
-        } else if (i === 10) {
+        } else if (i === 9) {
           d.value = `${this.stockBasket}`;
-        } else if (i === 11) {
+        } else if (i === 10) {
           d.value = `${this.stockTrades}`;
-        } else if (i === 12) {
+        } else if (i === 11) {
           d.value = `${this.stockMinHold}`;
-        } else if (i === 13) {
+        } else if (i === 12) {
           d.value = `${this.stockMinTrade}`;
         }
       })
@@ -465,8 +461,8 @@ export class EtlComponent implements OnInit {
     const minTrade = t1.holding;
     const basketHolding = `${h1.number}`;
     const basketTrade = `${t1.number}`;
-    const propLabels = ['ETL', 'RISK', 'RETURN', 'Non-zero weights', 'Min. holding'];
-    const propData = [this.ETL, this.RISK, this.RETURN, basketHolding, minHolding];
+    const propLabels = ['ETL', /*'RISK',*/ 'RETURN', 'Non-zero weights', 'Min. holding'];
+    const propData = [this.ETL, /* this.RISK,*/ this.RETURN, basketHolding, minHolding];
     if (this.stockInitial.length) {
       propLabels.push('Non-zero trades');
       propData.push(basketTrade);
